@@ -17,4 +17,8 @@
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
   </ItemGroup>
   <Import Project="..\Xamarin.Flex\Xamarin.Flex.projitems" Label="Shared" Condition="Exists('..\Xamarin.Flex\Xamarin.Flex.projitems')" />
+	<UsingTask TaskName="ShameHat.Tasks.FixXFCoreAssembly" AssemblyFile="..\ShameHat.Tasks\bin\Debug\netstandard2.0\ShameHat.Tasks.dll" />
+	<Target AfterTargets="AfterCompile" Name="ShameHat">
+		<FixXFCoreAssembly Assembly="$(IntermediateOutputPath)$(TargetFileName)" ReferencePath="@(ReferencePath)" />
+	</Target>
 </Project>
